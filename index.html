@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stemwijzer</title>
+	<link rel="stylesheet" href="css/w3.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="w3-half w3-display-topmiddle w3-margin-top" style="background-color: white;">
+		<div class="w3-container w3-margin-bottom w3-padding">
+			<div id="titles">
+				<img href="/" class="svg w3-margin-top" src="img/logo-stemwijzer.svg">
+				<h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
+			</div>
+			<h1 id="question" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+		</div>
+		<div id="desc" class="w3-container w3-margin-top w3-margin-bottom w3-padding" style="display: flex">
+			<div class="w3-half">
+				<p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
+				<p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
+			</div>
+			<div style="display: flex;justify-content: center;" class="w3-half">
+				<button style="height: 60px; padding: 0px 100px 0px 100px;" onclick="start()" class="w3-black w3-round-large w3-xlarge w3-margin-left w3-margin-top">Start</button>
+			</div>
+		</div>
+		<div id="footer" class="w3-container w3-light-grey w3-margin-top">
+			<h4>Of blik terug met de StemmenTracker</h4>
+			<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
+		</div>
+		<button id="1" onClick="reply_click(this.id)">B1</button>
+		<button id="2" onClick="reply_click(this.id)">B2</button>
+		<button id="3" onClick="reply_click(this.id)">B3</button>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>
