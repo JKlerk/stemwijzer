@@ -37,10 +37,15 @@ function stelling(){
 }
 
 function reply_click(clicked_id){
-	alert (clicked_id)
-	var buttonid = document.getElementById(clicked_id)
-	buttonid.classList.remove("w3-black");
-    buttonid.classList.add("w3-teal");
-    qcount + 1;
+	if (element.classList.contains(class)){
+		alert ("Already selected");
+	} else{
+		alert (clicked_id)
+		var buttonid = document.getElementById(clicked_id)
+		buttonid.classList.remove("w3-black");
+    	buttonid.classList.add("w3-teal");
+    	qcount++;
+	}
+
 }
 
