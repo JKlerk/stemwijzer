@@ -10,3 +10,24 @@ body{
 	width: 331px;
 	height: 56px;
 }
+
+.mx-20{
+	margin: 0px 20px 0px 20px;
+}
+
+button {
+    background: gray;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+ 
+
+button:hover {
+    background: gray;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+
+}

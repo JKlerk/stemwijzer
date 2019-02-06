@@ -6,13 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="w3-half w3-display-topmiddle w3-margin-top" style="background-color: white;">
-		<div class="w3-container w3-margin-bottom w3-padding">
+	<div class="w3-twothird w3-display-topmiddle w3-margin-top" style="background-color: white; padding: 50px;">
+		<div class="w3-container w3-padding">
 			<div id="titles">
 				<img href="/" class="svg w3-margin-top" src="img/logo-stemwijzer.svg">
 				<h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
 			</div>
-			<h1 id="question" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+			<h1 id="stelling" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+			<h1 id="question" style="font-weight: lighter;" class="w3-hide w3-threequarter">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</h1>
 		</div>
 		<div id="desc" class="w3-container w3-margin-top w3-margin-bottom w3-padding" style="display: flex">
 			<div class="w3-half">
@@ -27,9 +29,13 @@
 			<h4>Of blik terug met de StemmenTracker</h4>
 			<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 		</div>
-		<button id="1" onClick="reply_click(this.id)">Eens</button>
-		<button id="2" onClick="reply_click(this.id)">Geen van beide</button>
-		<button id="3" onClick="reply_click(this.id)">Oneens</button>
+
+		<div id="button" class="w3-hide w3-row-padding w3-margin-bottom w3-margin-top w3-xlarge">
+			<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="1" onClick="reply_click(this.id)">Eens</button>
+			<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding" id="2" onClick="reply_click(this.id)">Geen van beide</button>
+			<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="3" onClick="reply_click(this.id)">Oneens</button>
+			<button class="w3-col mx-20 s3 w3-padding w3-xlarge w3-text-grey w3-white" id="4" onClick="reply_click(this.id)">Sla de vraag over -></button>
+		</div>
 	</div>
 	<script src="js/data.js"></script>
 	<script src="js/script.js"></script>
