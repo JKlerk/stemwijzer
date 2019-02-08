@@ -6,8 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="w3-twothird w3-display-topmiddle w3-margin-top" style="background-color: white;">
-		<div class="w3-container w3-padding px-5 mt-4">
+	<div class="w3-twothird w3-display-topmiddle w3-margin-top" style="background-color: white; position: relative;">
+		<button class="w3-margin w3-hide" id="back"></button>
+		<div id="container" class="w3-container w3-padding px-5 mt-4">
 			<div id="titles">
 				<img href="/" class="svg w3-margin-top" src="img/logo-stemwijzer.svg">
 				<h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
@@ -30,12 +31,13 @@
 			<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 		</div>
 
-		<div id="button" class="w3-hide w3-row-padding w3-margin-bottom w3-margin-top w3-xlarge">
+		<div id="button" class="w3-hide w3-row-padding w3-margin-bottom w3-margin-top w3-xlarge" style="position: absolute; bottom: 0; min-width: 100%;">
 			<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="1" onClick="reply_click(this.id)">Eens</button>
 			<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding" id="2" onClick="reply_click(this.id)">Geen van beide</button>
 			<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="3" onClick="reply_click(this.id)">Oneens</button>
 			<button class="w3-col mx-20 s3 w3-padding w3-xlarge w3-text-grey w3-white" id="4" onClick="reply_click(this.id)">Sla de vraag over -></button>
 		</div>
+		
 	</div>
 	<script src="js/data.js"></script>
 	<script src="js/script.js"></script>

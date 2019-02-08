@@ -15,6 +15,17 @@ body{
 	margin: 0px 20px 0px 20px;
 }
 
+#back{
+	width: 50px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50px;
+	background-color: #E7EAEB;
+	background-image: url(../img/icon-arrow-back.svg);
+}
+
+
 button {
     background: gray;
     box-shadow: 0px 0px 0px transparent;
@@ -48,6 +59,10 @@ button:hover {
 
 .mb-4{
 	margin-top: 4rem !important;
+}
+
+.w3-twothird{
+	min-height: 627px;
 }
 
 
