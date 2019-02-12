@@ -24,7 +24,7 @@ var qcount = 0;
 	back.classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
-	document.getElementById("parties").classList.remove('w3-hide')
+	parties.classList.remove('w3-hide')
 	stelling();
 	curLength += 14.2857142857;
 	document.getElementById("bar").style.width = curLength + "%";
