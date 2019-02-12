@@ -6,13 +6,18 @@ body{
   background-size: cover;
 }
 
+details #summary::-webkit-details-marker {
+  display:none;
+}
+
 .svg{
 	width: 331px;
 	height: 56px;
 }
 
 .mx-20{
-	margin: 0px 20px 0px 20px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 #back{
@@ -61,8 +66,13 @@ button:hover {
 	margin-top: 4rem !important;
 }
 
-.w3-twothird{
-	min-height: 627px;
+.mr-4{
+	margin-right: 4rem !important;
+}
+
+.opinion__subtitle{
+	border-bottom: 2px solid black;
+	font-weight: bold;
 }
 
 #arrowback{
@@ -74,8 +84,18 @@ button:hover {
 	background-image: url(../img/icon-backspace-right.svg);
 }
 
+details summary::-webkit-details-marker {
+  float:right;
+  padding:.40em;
+}
 
+.party__description{
+	color: #4F4D4D;
+}
 
-
+.w3-col .opinion__party{
+	padding: .75em;
+	border-bottom: 1px solid #979797;
+}
 
 

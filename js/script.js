@@ -17,10 +17,13 @@ buttonStart.addEventListener("click", function start(){
 	button.classList.remove('w3-hide');
 	q.classList.remove('w3-hide')
 	document.getElementById('animate').classList.add('w3-animate-right');
+	document.getElementById('parties').classList.add('w3-animate-right');
 	back.classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
+	document.getElementById("parties").classList.remove('w3-hide')
 	stelling();
+
 })
 
 qcount = 0;
@@ -29,7 +32,6 @@ qcount = 0;
 //Verandering Vraag
 
 function stelling(){
-	
 	if (qcount == subjects.length){
 		stel.innerHTML = "Eind resultaat";
 		q.innerHTML = answers;
@@ -43,6 +45,22 @@ function stelling(){
 		q.innerHTML = subjects[qcount].statement;
 	}
 	console.log(answers)
+
+	document.getElementById("eens").innerHTML = "";
+	document.getElementById("none").innerHTML = "";
+	document.getElementById("oneens").innerHTML = "";
+	subjects[qcount].parties.forEach(function(element) {
+	if (element.position == "pro") {
+		document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+	}
+	else if (element.position == "ambivalent") {
+		document.getElementById("none").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+	}
+
+	else if (element.position == "contra") {
+		document.getElementById("oneens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+	}
+	});
 }
 
 function goBack(){

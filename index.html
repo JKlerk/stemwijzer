@@ -4,9 +4,10 @@
 	<title>Stemwijzer</title>
 	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="js/data.js"></script>
 </head>
 <body>
-	<div class="w3-twothird w3-display-topmiddle w3-margin-top" style="background-color: white; position: relative;">
+	<div class="w3-twothird w3-display-topmiddle w3-margin-top w3-margin-bottom" style="background-color: white; position: relative;">
 		<div id="animate">	
 			<button class="w3-margin w3-hide" onclick="goBack()" id="back"></button>
 			<div id="container" class="w3-container w3-padding px-5 mt-4">
@@ -21,7 +22,7 @@
 					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="1" onClick="reply_click(this.id)">Eens</button>
 					<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding" id="2" onClick="reply_click(this.id)">Geen van beide</button>
 					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="3" onClick="reply_click(this.id)">Oneens</button>
-					<button class="w3-col mx-20 s3 w3-white w3-xlarge w3-padding w3-text-grey" id="4" onClick="reply_click(this.id)">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
+					<button style="width: 23%;" class="w3-col w3-white w3-xlarge w3-padding w3-text-grey" id="4" onClick="reply_click(this.id)">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
 				</div>
 			</div>
 			<div id="desc" class="w3-container w3-margin-top w3-margin-bottom w3-padding px-5" style="display: flex">
@@ -37,10 +38,30 @@
 				<h4>Of blik terug met de StemmenTracker</h4>
 				<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 			</div>
-
 		</div>
+		
+		<div id="parties" class="w3-hide w3-container px-5 w3-margin-bottom w3-margin-top">
+			<div class="w3-light-grey w3-round-xlarge" style="padding: 30px;">
+				<details class="opinion__party">
+					<summary id="summary" class="party__title w3-xlarge"><img class="w3-margin-right" src="img/icon-forum.svg">Wat vinden de partijen?</summary>
+					<div style="display: flex; justify-content: center;">
+						<div class="w3-col s3 mr-4">
+							<h3 class="opinion__subtitle">Eens</h3>
+							<p id="eens">
+						</div>
+						<div class="w3-col s3 mr-4">
+							<h3 class="opinion__subtitle">Geen van beide</h3>
+							<p id="none">
+						</div>
+						<div class="w3-col s3">
+							<h3 class="opinion__subtitle">Oneens</h3>
+							<p id="oneens">
+						</div>
+					</div>
+				</details>
+			</div>
+	    </div>
 	</div>
-	<script src="js/data.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
