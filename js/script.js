@@ -1,46 +1,55 @@
-var titles = document.getElementById("titles");
 var desc = document.getElementById("desc");
-var footer = document.getElementById("footer");
 var stel = document.getElementById("stelling");
 var q = document.getElementById("question");
 var button = document.getElementById("button");
 var back = document.getElementById("back");
+var parties = document.getElementById('parties');
+var animate = document.getElementById('animate')
 
 var answers = [];
 var buttonStart = document.getElementById("start")
 
+var curLength = 0;
+var qcount = 0;
+
 buttonStart.addEventListener("click", function start(){
+	
 	console.log("Started")
-	titles.style.display = "none";
+	document.getElementById("titles").style.display = "none";
 	desc.style.display = "none";
-	footer.style.display = "none";
+	document.getElementById("footer").style.display = "none";
 	button.classList.remove('w3-hide');
 	q.classList.remove('w3-hide')
-	document.getElementById('animate').classList.add('w3-animate-right');
-	document.getElementById('parties').classList.add('w3-animate-right');
+	animate.classList.add('w3-animate-right');
+	parties.classList.add('w3-animate-right');
 	back.classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
 	document.getElementById("parties").classList.remove('w3-hide')
 	stelling();
+	curLength += 14.2857142857;
+	document.getElementById("bar").style.width = curLength + "%";
 
 })
 
-qcount = 0;
+
 // console.log(subjects[0])
 
 //Verandering Vraag
+
 
 function stelling(){
 	if (qcount == subjects.length){
 		stel.innerHTML = "Eind resultaat";
 		q.innerHTML = answers;
 		back.classList.add('w3-hide');
+		parties.classList.add('w3-hide');
 		document.getElementById("container").classList.add('mt-4')
 		for (var i = 1; i <= 4; i++) {
 			document.getElementById(i).classList.add("w3-hide");
 		}
 	} else{
+		document.getElementById("bar").style.width = curLength + "%";
 		stel.innerHTML = qcount+1 + ". " + subjects[qcount].title;
 		q.innerHTML = subjects[qcount].statement;
 	}
@@ -49,6 +58,7 @@ function stelling(){
 	document.getElementById("eens").innerHTML = "";
 	document.getElementById("none").innerHTML = "";
 	document.getElementById("oneens").innerHTML = "";
+
 	subjects[qcount].parties.forEach(function(element) {
 	if (element.position == "pro") {
 		document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
@@ -64,6 +74,7 @@ function stelling(){
 }
 
 function goBack(){
+	curLength -= 14.2857142857;
 	if (qcount != 0){
 		qcount--
 		stelling();
@@ -78,6 +89,16 @@ function goBack(){
 	} else{
 		location.reload();
 	}
+
+	animate.classList.remove("w3-animate-right");
+	animate.classList.remove("w3-animate-left");
+	void animate.offsetWidth;
+	animate.classList.add("w3-animate-left");
+
+	animate.classList.remove("w3-animate-right");
+	parties.classList.remove("w3-animate-left");
+	void parties.offsetWidth;
+	parties.classList.add("w3-animate-left");
 }
 
 //Knoppen
@@ -90,13 +111,29 @@ function reply_click(clicked_id){
 		document.getElementById(i).classList.remove('w3-teal');
 		document.getElementById(i).classList.add('w3-black');	
 	}
-
+	curLength += 14.2857142857;
 	qcount++;
 	if (answers.length > qcount){
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
 	}
-	stelling();
+	stelling(); 
+	animate.classList.remove("w3-animate-left");
+	animate.classList.remove("w3-animate-right");
+	void animate.offsetWidth;
+	animate.classList.add("w3-animate-right");
+
+	animate.classList.remove("w3-animate-left");
+	parties.classList.remove("w3-animate-right");
+	void parties.offsetWidth;
+	parties.classList.add("w3-animate-right");
+
 }
+
+
+
+
+
+
 
 

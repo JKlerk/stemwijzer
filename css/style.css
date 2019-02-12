@@ -30,6 +30,9 @@ details #summary::-webkit-details-marker {
 	background-image: url(../img/icon-arrow-back.svg);
 }
 
+#bar{
+	transition: .3s width ease-in-out;
+}
 
 button {
     background: gray;

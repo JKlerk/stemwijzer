@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Stemwijzer</title>
+	<title id="result">Stemwijzer</title>
 	<link rel="stylesheet" href="css/w3.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="js/data.js"></script>
 </head>
 <body>
-	<div class="w3-twothird w3-display-topmiddle w3-margin-top w3-margin-bottom" style="background-color: white; position: relative;">
+	<div class="w3-twothird w3-display-topmiddle w3-margin-top w3-margin-bottom" style="background-color: white; position: relative; min-height: 610px;">
+		<div id="bar" class="w3-light-blue" style="height: 5px; width: 0px;"></div>
 		<div id="animate">	
 			<button class="w3-margin w3-hide" onclick="goBack()" id="back"></button>
 			<div id="container" class="w3-container w3-padding px-5 mt-4">
@@ -62,6 +62,7 @@
 			</div>
 	    </div>
 	</div>
+	<script src="js/data.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
