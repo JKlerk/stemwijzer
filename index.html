@@ -17,6 +17,12 @@
 				<h1 id="stelling" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
 				<h1 id="question" style="font-weight: lighter;" class="w3-hide w3-threequarter">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</h1>
+				<div id="button" class="w3-hide w3-margin-bottom w3-margin-top w3-xlarge" style="position: absolute; bottom: 0; min-width: 100%; margin-left: -20px;">
+					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="1" onClick="reply_click(this.id)">Eens</button>
+					<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding" id="2" onClick="reply_click(this.id)">Geen van beide</button>
+					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="3" onClick="reply_click(this.id)">Oneens</button>
+					<button class="w3-col mx-20 s3 w3-white w3-xlarge w3-padding w3-text-grey" id="4" onClick="reply_click(this.id)">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
+				</div>
 			</div>
 			<div id="desc" class="w3-container w3-margin-top w3-margin-bottom w3-padding px-5" style="display: flex">
 				<div class="w3-half">
@@ -32,12 +38,6 @@
 				<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 			</div>
 
-			<div id="button" class="w3-hide w3-row-padding w3-margin-bottom w3-margin-top w3-xlarge" style="position: absolute; bottom: 0; min-width: 100%;">
-				<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="1" onClick="reply_click(this.id)">Eens</button>
-				<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding" id="2" onClick="reply_click(this.id)">Geen van beide</button>
-				<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding" id="3" onClick="reply_click(this.id)">Oneens</button>
-				<button class="w3-col mx-20 s3 w3-white w3-xlarge w3-padding w3-text-grey" id="4" onClick="reply_click(this.id)">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
-			</div>
 		</div>
 	</div>
 	<script src="js/data.js"></script>

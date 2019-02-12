@@ -31,8 +31,8 @@ qcount = 0;
 function stelling(){
 	
 	if (qcount == subjects.length){
-		q.innerHTML = "Einde";
-		stel.innerHTML = "Einde";
+		stel.innerHTML = "Eind resultaat";
+		q.innerHTML = answers;
 		back.classList.add('w3-hide');
 		document.getElementById("container").classList.add('mt-4')
 		for (var i = 1; i <= 4; i++) {
@@ -49,7 +49,7 @@ function goBack(){
 	if (qcount != 0){
 		qcount--
 		stelling();
-		for (var i = 1; i < 3; i++) {
+		for (var i = 1; i < 4; i++) {
 			document.getElementById(i).classList.remove('w3-teal');
 			document.getElementById(i).classList.add('w3-black');	
 		}
