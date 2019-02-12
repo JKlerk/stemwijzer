@@ -85,15 +85,8 @@ function goBack(){
 	} else{
 		location.reload();
 	}
-	animate.classList.remove("w3-animate-right");
-	animate.classList.remove("w3-animate-left");
-	void animate.offsetWidth;
-	animate.classList.add("w3-animate-left");
-
-	animate.classList.remove("w3-animate-right");
-	parties.classList.remove("w3-animate-left");
-	void parties.offsetWidth;
-	parties.classList.add("w3-animate-left");
+	removeClass();
+	animate.classList.add('w3-animate-left');
 }
 
 //Knoppen
@@ -113,18 +106,15 @@ function reply_click(clicked_id){
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
 	}
 	stelling(); 
+	removeClass();
+	animate.classList.add('w3-animate-right');
+}
+
+function removeClass(){
 	animate.classList.remove("w3-animate-left");
 	animate.classList.remove("w3-animate-right");
 	void animate.offsetWidth;
-	animate.classList.add("w3-animate-right");
-
-	animate.classList.remove("w3-animate-left");
-	parties.classList.remove("w3-animate-right");
-	void parties.offsetWidth;
-	parties.classList.add("w3-animate-right");
-
 }
-
 
 
 
