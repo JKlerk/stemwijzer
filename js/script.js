@@ -58,19 +58,17 @@ function stelling(){
 	document.getElementById("eens").innerHTML = "";
 	document.getElementById("none").innerHTML = "";
 	document.getElementById("oneens").innerHTML = "";
-
-	subjects[qcount].parties.forEach(function(element) {
-	if (element.position == "pro") {
-		document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+	if (qcount != 7) {
+		subjects[qcount].parties.forEach(function(element) {
+			if (element.position == "pro") {
+				document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+			} else if (element.position == "ambivalent") {
+				document.getElementById("none").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+			} else if (element.position == "contra") {
+				document.getElementById("oneens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+			}
+		});
 	}
-	else if (element.position == "ambivalent") {
-		document.getElementById("none").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
-	}
-
-	else if (element.position == "contra") {
-		document.getElementById("oneens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
-	}
-	});
 }
 
 function goBack(){
@@ -82,14 +80,11 @@ function goBack(){
 			document.getElementById(i).classList.remove('w3-teal');
 			document.getElementById(i).classList.add('w3-black');	
 		}
-
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
-
 	} else{
 		location.reload();
 	}
-
 	animate.classList.remove("w3-animate-right");
 	animate.classList.remove("w3-animate-left");
 	void animate.offsetWidth;
