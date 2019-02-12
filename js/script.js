@@ -1,24 +1,23 @@
 var desc = document.getElementById("desc");
 var stel = document.getElementById("stelling");
 var q = document.getElementById("question");
-var button = document.getElementById("button");
 var back = document.getElementById("back");
+
 var parties = document.getElementById('parties');
 var animate = document.getElementById('animate')
 
 var answers = [];
-var buttonStart = document.getElementById("start")
 
 var curLength = 0;
 var qcount = 0;
 
-buttonStart.addEventListener("click", function start(){
+ document.getElementById("start").addEventListener("click", function start(){
 	
 	console.log("Started")
 	document.getElementById("titles").style.display = "none";
 	desc.style.display = "none";
 	document.getElementById("footer").style.display = "none";
-	button.classList.remove('w3-hide');
+	document.getElementById("button").classList.remove('w3-hide');
 	q.classList.remove('w3-hide')
 	animate.classList.add('w3-animate-right');
 	parties.classList.add('w3-animate-right');
@@ -87,10 +86,10 @@ function goBack(){
 	}
 	removeClass();
 	animate.classList.add('w3-animate-left');
+	parties.classList.add('w3-animate-left');
 }
 
 //Knoppen
-
 function reply_click(clicked_id){
 	var buttonid = document.getElementById(clicked_id)
 
@@ -108,11 +107,14 @@ function reply_click(clicked_id){
 	stelling(); 
 	removeClass();
 	animate.classList.add('w3-animate-right');
+	parties.classList.add('w3-animate-right');
 }
 
 function removeClass(){
 	animate.classList.remove("w3-animate-left");
 	animate.classList.remove("w3-animate-right");
+	parties.classList.remove("w3-animate-left");
+	parties.classList.remove("w3-animate-right");
 	void animate.offsetWidth;
 }
 
