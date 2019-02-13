@@ -4,7 +4,7 @@ var q = document.getElementById("question");
 var back = document.getElementById("back");
 
 var parties = document.getElementById('parties');
-var animate = document.getElementById('animate')
+var animate = document.getElementById('animate');
 
 var answers = [];
 
@@ -18,8 +18,7 @@ document.getElementById("start").addEventListener("click", function start(){
 	document.getElementById("footer").style.display = "none";
 	document.getElementById("button").classList.remove('w3-hide');
 	q.classList.remove('w3-hide')
-	animate.classList.add('w3-animate-right');
-	parties.classList.add('w3-animate-right');
+	addClassR();
 	back.classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
@@ -51,9 +50,8 @@ function stelling(){
 	}
 	console.log(answers)
 
-	document.getElementById("eens").innerHTML = "";
-	document.getElementById("none").innerHTML = "";
-	document.getElementById("oneens").innerHTML = "";
+	document.getElementById("eens").innerHTML = "";document.getElementById("none").innerHTML = "";document.getElementById("oneens").innerHTML = "";
+
 	if (qcount != 7) {
 		subjects[qcount].parties.forEach(function(element) {
 			if (element.position == "pro") {
@@ -107,8 +105,7 @@ function reply_click(clicked_id){
 	}
 	stelling(); 
 	removeClass();
-	animate.classList.add('w3-animate-right');
-	parties.classList.add('w3-animate-right');
+	addClassR();
 }
 
 function removeClass(){
@@ -117,6 +114,11 @@ function removeClass(){
 	parties.classList.remove("w3-animate-left");
 	parties.classList.remove("w3-animate-right");
 	void animate.offsetWidth;
+}
+
+function addClassR(){
+	animate.classList.add('w3-animate-right');
+	parties.classList.add('w3-animate-right');
 }
 
 
