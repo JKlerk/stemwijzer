@@ -5,8 +5,12 @@ var back = document.getElementById("back");
 
 var parties = document.getElementById('parties');
 var animate = document.getElementById('animate');
+var multButton = document.getElementById('multiply')
+
+var weight = 0;
 
 var answers = [];
+var weightsArray = [];
 
 var curLength = 0;
 var qcount = 0;
@@ -20,6 +24,7 @@ document.getElementById("start").addEventListener("click", function start(){
 	q.classList.remove('w3-hide')
 	addClassR();
 	back.classList.remove('w3-hide');
+	multButton.classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
 	parties.classList.remove('w3-hide')
@@ -29,6 +34,7 @@ document.getElementById("start").addEventListener("click", function start(){
 	document.getElementById(1).addEventListener("click", function(){reply_click(1)})
 	document.getElementById(2).addEventListener("click", function(){reply_click(2)})
 	document.getElementById(3).addEventListener("click", function(){reply_click(3)})
+	document.getElementById(4).addEventListener("click", function(){reply_click(4)})
 })
 
 //Verandering Vraag
@@ -48,7 +54,17 @@ function stelling(){
 		stel.innerHTML = qcount+1 + ". " + subjects[qcount].title;
 		q.innerHTML = subjects[qcount].statement;
 	}
+	weight = weightsArray.length > qcount ? weightsArray[qcount] : 1;
+
+	if (weight == 2) {
+		document.getElementById("multiply").checked = true;
+	} else{
+		document.getElementById("multiply").checked = false;
+
+	}
+	
 	console.log(answers)
+	console.log(weightsArray)
 
 	document.getElementById("eens").innerHTML = "";document.getElementById("none").innerHTML = "";document.getElementById("oneens").innerHTML = "";
 
@@ -89,8 +105,9 @@ function goBack(){
 //Knoppen
 function reply_click(clicked_id){
 	var buttonid = document.getElementById(clicked_id)
-
 	answers[qcount] = clicked_id;
+	weightsArray[qcount] = weight;
+
 	for (var i = 1; i < 4; i++) {
 		document.getElementById(i).classList.remove('w3-teal');
 		document.getElementById(i).classList.add('w3-black');
@@ -106,6 +123,10 @@ function reply_click(clicked_id){
 	stelling(); 
 	removeClass();
 	addClassR();
+}
+
+function multiply(){
+	weight = multButton.checked +1;
 }
 
 function removeClass(){
