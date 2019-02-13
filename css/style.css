@@ -15,6 +15,15 @@ details #summary::-webkit-details-marker {
 	height: 56px;
 }
 
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: -10px}
+  100%  {opacity: 1; margin-left: 0px}
+}
+
 .mx-20{
 	margin-right: 20px;
 	margin-left: 20px;
@@ -32,6 +41,10 @@ details #summary::-webkit-details-marker {
 
 #bar{
 	transition: .3s width ease-in-out;
+}
+
+.w3-hover-blue:hover{
+	transition: background-color .2s ease;
 }
 
 button {

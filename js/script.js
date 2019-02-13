@@ -11,8 +11,7 @@ var answers = [];
 var curLength = 0;
 var qcount = 0;
 
- document.getElementById("start").addEventListener("click", function start(){
-	
+document.getElementById("start").addEventListener("click", function start(){	
 	console.log("Started")
 	document.getElementById("titles").style.display = "none";
 	desc.style.display = "none";
@@ -31,11 +30,7 @@ var qcount = 0;
 
 })
 
-
-// console.log(subjects[0])
-
 //Verandering Vraag
-
 
 function stelling(){
 	if (qcount == subjects.length){
@@ -77,10 +72,12 @@ function goBack(){
 		stelling();
 		for (var i = 1; i < 4; i++) {
 			document.getElementById(i).classList.remove('w3-teal');
-			document.getElementById(i).classList.add('w3-black');	
+			document.getElementById(i).classList.add('w3-black');
+			// console.log("Removed from" + i)	
 		}
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
+		// console.log("Added to" + answers[qcount])
 	} else{
 		location.reload();
 	}
@@ -94,15 +91,17 @@ function reply_click(clicked_id){
 	var buttonid = document.getElementById(clicked_id)
 
 	answers[qcount] = clicked_id;
-	for (var i = 1; i < 3; i++) {
+	for (var i = 1; i < 4; i++) {
 		document.getElementById(i).classList.remove('w3-teal');
-		document.getElementById(i).classList.add('w3-black');	
+		document.getElementById(i).classList.add('w3-black');
+		// console.log("Removed from" + i)	
 	}
 	curLength += 14.2857142857;
 	qcount++;
 	if (answers.length > qcount){
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
+		// console.log("Added to" + answers[qcount])
 	}
 	stelling(); 
 	removeClass();
