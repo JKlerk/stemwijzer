@@ -24,7 +24,7 @@ document.getElementById("start").addEventListener("click", function start(){
 	q.classList.remove('w3-hide')
 	addClassR();
 	back.classList.remove('w3-hide');
-	multButton.classList.remove('w3-hide');
+	document.getElementById("multiplyDiv").classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
 	parties.classList.remove('w3-hide')
@@ -45,6 +45,7 @@ function stelling(){
 		q.innerHTML = answers;
 		back.classList.add('w3-hide');
 		parties.classList.add('w3-hide');
+		document.getElementById("multiplyDiv").classList.add('w3-hide');
 		document.getElementById("container").classList.add('mt-4')
 		for (var i = 1; i <= 4; i++) {
 			document.getElementById(i).classList.add("w3-hide");
