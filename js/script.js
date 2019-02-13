@@ -90,11 +90,9 @@ function goBack(){
 		for (var i = 1; i < 4; i++) {
 			document.getElementById(i).classList.remove('w3-teal');
 			document.getElementById(i).classList.add('w3-black');
-			// console.log("Removed from" + i)	
 		}
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
-		// console.log("Added to" + answers[qcount])
 	} else{
 		location.reload();
 	}
@@ -112,14 +110,12 @@ function reply_click(clicked_id){
 	for (var i = 1; i < 4; i++) {
 		document.getElementById(i).classList.remove('w3-teal');
 		document.getElementById(i).classList.add('w3-black');
-		// console.log("Removed from" + i)	
 	}
 	curLength += 14.2857142857;
 	qcount++;
 	if (answers.length > qcount){
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
-		// console.log("Added to" + answers[qcount])
 	}
 	stelling(); 
 	removeClass();
