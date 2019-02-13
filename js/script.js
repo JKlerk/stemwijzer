@@ -27,7 +27,9 @@ document.getElementById("start").addEventListener("click", function start(){
 	stelling();
 	curLength += 14.2857142857;
 	document.getElementById("bar").style.width = curLength + "%";
-
+	document.getElementById(1).addEventListener("click", function(){reply_click(1)})
+	document.getElementById(2).addEventListener("click", function(){reply_click(2)})
+	document.getElementById(3).addEventListener("click", function(){reply_click(3)})
 })
 
 //Verandering Vraag
