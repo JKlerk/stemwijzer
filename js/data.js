@@ -223,7 +223,7 @@ var parties = [
 	{name: "SGP", secular: false, size: 33, long: "Staatkundig Gerefomeerde Partij"},
 	{name: "DENK", secular: true, size: 3},
 	{name: "Forum voor Democratie", secular: true, size: 2},
-	{name: "Lokaal in de kamer", secular: true, size: 0},
+	{name: "Lokaal in de Kamer", secular: true, size: 0},
 	{name: "OndernemersPartij", secular: true, size: 0},
 	{name: "VNL", secular: true, size: 0},
 	{name: "Nieuwe Wegen", secular: true, size: 0},

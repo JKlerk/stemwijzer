@@ -1,11 +1,11 @@
-var desc = document.getElementById("desc");
-var stel = document.getElementById("stelling");
-var q = document.getElementById("question");
-var back = document.getElementById("back");
+const desc = document.getElementById("desc");
+const stel = document.getElementById("stelling");
+const q = document.getElementById("question");
+const back = document.getElementById("back");
 
-var parties = document.getElementById('parties');
-var animate = document.getElementById('animate');
-var multButton = document.getElementById('multiply')
+var partiesElement = document.getElementById('parties');
+const animate = document.getElementById('animate');
+const multButton = document.getElementById('multiply')
 
 var weight = 0;
 
@@ -14,6 +14,7 @@ var weightsArray = [];
 
 var curLength = 0;
 var qcount = 0;
+
 
 document.getElementById("start").addEventListener("click", function start(){	
 	console.log("Started")
@@ -27,7 +28,7 @@ document.getElementById("start").addEventListener("click", function start(){
 	document.getElementById("multiplyDiv").classList.remove('w3-hide');
 	document.getElementById("container").classList.remove('mt-4')
 	q.style.marginBottom = "100px";
-	parties.classList.remove('w3-hide')
+	partiesElement.classList.remove('w3-hide')
 	stelling();
 	curLength += 14.2857142857;
 	document.getElementById("bar").style.width = curLength + "%";
@@ -42,14 +43,15 @@ document.getElementById("start").addEventListener("click", function start(){
 function stelling(){
 	if (qcount == subjects.length){
 		stel.innerHTML = "Eind resultaat";
-		q.innerHTML = answers;
+		q.classList.add('w3-hide');
 		back.classList.add('w3-hide');
-		parties.classList.add('w3-hide');
+		partiesElement.classList.add('w3-hide');
 		document.getElementById("multiplyDiv").classList.add('w3-hide');
 		document.getElementById("container").classList.add('mt-4')
 		for (var i = 1; i <= 4; i++) {
 			document.getElementById(i).classList.add("w3-hide");
 		}
+		calculate()
 	} else{
 		document.getElementById("bar").style.width = curLength + "%";
 		stel.innerHTML = qcount+1 + ". " + subjects[qcount].title;
@@ -61,11 +63,10 @@ function stelling(){
 		document.getElementById("multiply").checked = true;
 	} else{
 		document.getElementById("multiply").checked = false;
-
 	}
 	
-	console.log(answers)
 	console.log(weightsArray)
+	console.log(answers)
 
 	document.getElementById("eens").innerHTML = "";document.getElementById("none").innerHTML = "";document.getElementById("oneens").innerHTML = "";
 
@@ -98,7 +99,7 @@ function goBack(){
 	}
 	removeClass();
 	animate.classList.add('w3-animate-left');
-	parties.classList.add('w3-animate-left');
+	partiesElement.classList.add('w3-animate-left');
 }
 
 //Knoppen
@@ -106,7 +107,6 @@ function reply_click(clicked_id){
 	var buttonid = document.getElementById(clicked_id)
 	answers[qcount] = clicked_id;
 	weightsArray[qcount] = weight;
-
 	for (var i = 1; i < 4; i++) {
 		document.getElementById(i).classList.remove('w3-teal');
 		document.getElementById(i).classList.add('w3-black');
@@ -116,10 +116,66 @@ function reply_click(clicked_id){
 	if (answers.length > qcount){
 		document.getElementById(answers[qcount]).classList.add('w3-teal');
 		document.getElementById(answers[qcount]).classList.remove('w3-black');
-	}
+	}	
 	stelling(); 
 	removeClass();
 	addClassR();
+}
+
+function calculate(){
+	for(var i = 0; i < answers.length; i++) {
+	    var q = answers[i]
+	    var weight = weightsArray[i]
+	    for(var j = 0; j < subjects[i].parties.length; j++) {
+	    	var party = getParty(subjects[i].parties[j].name)
+	    	if(party == null) continue;
+	    	console.log(getParty(subjects[i].parties[j].name).points)
+	        if(party.points == undefined) {
+	            party.points = 0
+	        }
+	        var points = calcPoints(subjects[i].parties[j].position, q)
+	        console.log(points)
+	        party.points += points
+	    }
+	}
+	showResult();
+}
+
+function getParty(name) {
+	for (var i = parties.length - 1; i >= 0; i--) {
+		if(parties[i].name == name) return parties[i]
+	}
+	return null
+}
+
+function calcPoints(expected, given){
+	let conv = 0
+	if(expected == "pro") {
+		conv = 1
+	}else if(expected == "contra") {
+		conv = -1
+	}
+
+	if(given == conv) {
+		return 1
+	}else if(given == 0) {
+		return given
+	}
+	return -1
+}
+
+function showResult(){
+	var div = document.getElementById("results")
+	var result = document.createElement("span")
+
+	for (var i = parties.sort((a, b) => { return a.points - b.points}).length - 1; i >= 0; i--) {
+		var calcLength = parties[i].points * 100;
+
+		if(parties[i].points > -1){
+			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'px">' + parties[i].points + '</div>';
+		}	
+	}
+	div.appendChild(result)
 }
 
 function multiply(){
@@ -129,14 +185,14 @@ function multiply(){
 function removeClass(){
 	animate.classList.remove("w3-animate-left");
 	animate.classList.remove("w3-animate-right");
-	parties.classList.remove("w3-animate-left");
-	parties.classList.remove("w3-animate-right");
+	partiesElement.classList.remove("w3-animate-left");
+	partiesElement.classList.remove("w3-animate-right");
 	void animate.offsetWidth;
 }
 
 function addClassR(){
 	animate.classList.add('w3-animate-right');
-	parties.classList.add('w3-animate-right');
+	partiesElement.classList.add('w3-animate-right');
 }
 
 
