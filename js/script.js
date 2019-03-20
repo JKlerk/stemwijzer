@@ -135,7 +135,7 @@ function calculate(){
 	        }
 	        var points = calcPoints(subjects[i].parties[j].position, q)
 	        console.log(points)
-	        party.points += points
+	        party.points -= points
 	    }
 	}
 	showResult();
@@ -149,11 +149,11 @@ function getParty(name) {
 }
 
 function calcPoints(expected, given){
-	let conv = 0
+	let conv = 2
 	if(expected == "pro") {
-		conv = 1
+		conv = 3
 	}else if(expected == "contra") {
-		conv = -1
+		conv = 1
 	}
 
 	if(given == conv) {
@@ -169,14 +169,26 @@ function showResult(){
 	var result = document.createElement("span")
 
 	for (var i = parties.sort((a, b) => { return a.points - b.points}).length - 1; i >= 0; i--) {
-		var calcLength = 5 * parties[i].points; 
+		var posLength = 5 * parties[i].points; 
 		var negLength = 5 * Math.abs(parties[i].points);
+	
 
-		if(parties[i].points > -1){
-			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'%">' + calcLength + '%</div>';
+		if (parties[i].points < 0){
+			var color = "red"
+			var calcLength = negLength;
+			var status = "-"
 		} else{
-			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-red" style="max-width:1000px;width:'+ negLength +'%">-' + negLength + '%</div>';
+			var calcLength = posLength;
+			var color = "green"
+			var status = ""
 		}
+		result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-'+ color +'" style="max-width:1000px;width:'+ calcLength +'%">'+ status + calcLength + '%</div>';
+
+		// if(parties[i].points > -1){
+		// 	result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'%">' + calcLength + '%</div>';
+		// } else{
+		// 	result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-red" style="max-width:1000px;width:'+ negLength +'%">-' + negLength + '%</div>';
+		// }
 	}
 	div.appendChild(result)
 }
