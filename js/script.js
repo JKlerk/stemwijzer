@@ -169,11 +169,14 @@ function showResult(){
 	var result = document.createElement("span")
 
 	for (var i = parties.sort((a, b) => { return a.points - b.points}).length - 1; i >= 0; i--) {
-		var calcLength = parties[i].points * 100;
+		var calcLength = 5 * parties[i].points; 
+		var negLength = 5 * Math.abs(parties[i].points);
 
 		if(parties[i].points > -1){
-			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'px">' + parties[i].points + '</div>';
-		}	
+			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'%">' + calcLength + '%</div>';
+		} else{
+			result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-red" style="max-width:1000px;width:'+ negLength +'%">-' + negLength + '%</div>';
+		}
 	}
 	div.appendChild(result)
 }
