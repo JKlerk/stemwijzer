@@ -169,20 +169,34 @@ function showResult(){
 	var result = document.createElement("span")
 
 	for (var i = parties.sort((a, b) => { return a.points - b.points}).length - 1; i >= 0; i--) {
-		var posLength = 5 * parties[i].points; 
-		var negLength = 5 * Math.abs(parties[i].points);
-	
+		var posLength = 14 * parties[i].points; 
+		var negLength = 14 * Math.abs(parties[i].points);
 
-		if (parties[i].points < 0){
+		if (parties[i].points == 7){
+			var color = "green"
+			var calcLength = 100;
+			var percent = 100;
+			var status = ""
+		}else if(parties[i].points == 1){
+			var color = "green";
+			var calcLength = 5;
+			var percent = 0;
+		} else if(parties[i].points == -1) {
+			var color = "red";
+			var calcLength = 5;
+			var percent = 0;	
+		} else if (parties[i].points < 0){
 			var color = "red"
 			var calcLength = negLength;
+			var percent = negLength;
 			var status = "-"
 		} else{
 			var calcLength = posLength;
+			var percent = posLength;
 			var color = "green"
 			var status = ""
 		}
-		result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-'+ color +'" style="max-width:1000px;width:'+ calcLength +'%">'+ status + calcLength + '%</div>';
+		result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-'+ color +'" style="max-width:1000px;width:'+ calcLength +'%">'+ status + percent + '%</div>';
 
 		// if(parties[i].points > -1){
 		// 	result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-light-blue" style="max-width:1000px;width:'+ calcLength +'%">' + calcLength + '%</div>';
