@@ -8,40 +8,41 @@
 <body>
 	<div class="w3-twothird w3-display-topmiddle w3-margin-top w3-margin-bottom" style="background-color: white; position: relative; min-height: 610px;">
 		<div id="bar" class="w3-light-blue" style="height: 8px; width: 0px;"></div>
-		<button class="w3-margin w3-hide" onclick="goBack()" id="back"></button>
+		<button class="w3-margin w3-hide" onclick="goBack()" id="buttonBack"></button>
 		<div id="animate">	
 			<div class="w3-hide px-5" id="multiplyDiv">
-				<input style="margin-top: 5px; margin-right: 5px;" type="checkbox" onclick="multiply()" id="multiply">
+				<input style="margin-top: 5px; margin-right: 5px;" type="checkbox" id="multiply">
 				<p style="margin: 0;">Multiply score</p>
 			</div>
-			<div id="container" class="w3-container w3-padding px-5 mt-4">
+			<div class="w3-container w3-padding px-5">
 				<div id="titles">
 					<img href="/" class="svg w3-margin-top" src="img/logo-stemwijzer.svg">
 					<h4 style="font-weight: bold; margin: 0;">Stemwijzer 2e Kamer 2017</h4>
 				</div>
-				<h1 id="stelling" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
-				<div id="results"></div>
-				<h1 id="question" style="font-weight: lighter; min-height: 261px;" class="w3-hide w3-threequarter">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				<h1 id="stellingTitle" style="font-weight: bold;" class="w3-text-light-blue">Test uw politieke voorkeur aan de hand van 30 stellingen</h1>
+				<h1 id="stellingStatement" style="font-weight: lighter; min-height: 261px;" class="w3-hide w3-threequarter">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</h1>
-				<div id="button" class="w3-hide w3-margin-bottom w3-margin-top w3-xlarge" style="position: absolute; bottom: 0; min-width: 100%; margin-left: -20px;">
-					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding w3-hover-blue" id="1">Eens</button>
-					<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding w3-hover-blue" id="2">Geen van beide</button>
-					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding w3-hover-blue" id="3">Oneens</button>
-					<button style="width: 23%;" class="w3-col w3-white w3-xlarge w3-padding w3-text-grey" id="4">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
+				<div id="buttons" class="w3-hide w3-margin-bottom w3-margin-top w3-xlarge" style="position: absolute; min-width: 100%;margin-left: -20px; margin-top: 200px !important;">
+					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding w3-hover-blue" onclick="changeStelling('eens')">Eens</button>
+					<button class="w3-col mx-20 s3 w3-black w3-round-large w3-padding w3-hover-blue" onclick="changeStelling('none')">Geen van beide</button>
+					<button class="w3-col mx-20 s2 w3-black w3-round-large w3-padding w3-hover-blue" onclick="changeStelling('oneens')">Oneens</button>
+					<button style="width: 23%;" class="w3-col w3-white w3-xlarge w3-padding w3-text-grey">Sla de vraag over<img class="w3-margin-left" src="img/icon-backspace-right.svg"></button>
 				</div>
 			</div>
-			<div id="desc" class="w3-container w3-margin-top w3-margin-bottom w3-padding px-5" style="display: flex">
-				<div class="w3-half">
-					<p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
-					<p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
+			<div id="footer">
+				<div class="w3-container w3-margin-top w3-margin-bottom w3-padding px-5" style="display: flex">
+					<div class="w3-half">
+						<p>Bekijk de toegankelijke versie voor mensen met een visuele beperking</p>
+						<p>De StemWijzer maakt geen gebruik van cookies. Klik hier voor de volledige privacy statement</p>
+					</div>
+					<div style="display: flex;justify-content: center;" class="w3-half">
+						<button id="start" style="height: 60px; padding: 0px 100px 0px 100px;" class="w3-black w3-round-large w3-xlarge w3-margin-left w3-margin-top">Start</button>
+					</div>
 				</div>
-				<div style="display: flex;justify-content: center;" class="w3-half">
-					<button id="start" style="height: 60px; padding: 0px 100px 0px 100px;" class="w3-black w3-round-large w3-xlarge w3-margin-left w3-margin-top">Start</button>
+				<div class="w3-container w3-light-grey w3-margin-top mt-4 px-5 pb-5 pt-2">
+					<h4>Of blik terug met de StemmenTracker</h4>
+					<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 				</div>
-			</div>
-			<div id="footer" class="w3-container w3-light-grey w3-margin-top mt-4 px-5 pb-5 pt-2">
-				<h4>Of blik terug met de StemmenTracker</h4>
-				<p>Wat hebben de partijen in het verleden waargemaakt van hun verkiezingsbeloften? 'Track' uw stem met de Stemmentracker, een website die terugblikt op 30 Tweede Kamerstemmingen van de afgelopen regeerperiode. Met welke partij stemde u mee?</p>
 			</div>
 		</div>		
 		<div id="parties" class="w3-hide w3-container px-5 w3-margin-bottom w3-margin-top">
