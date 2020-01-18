@@ -24,7 +24,6 @@ document.getElementById("start").addEventListener("click", function start(){
 	buttons.classList.remove('w3-hide');
 	buttonBack.classList.remove('w3-hide');
 	document.getElementById('multiplyDiv').classList.remove('w3-hide');
-	document.getElementById("bar").style.width = baseLength + "%";
 
 	// Gets stelling
 	getStelling()
@@ -35,6 +34,16 @@ function getStelling(){
 	console.log(answers)
 	stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
 	stellingStatement.innerHTML = subjects[questionCount].statement
+	document.getElementById("bar").style.width = curLength + "%";
+	subjects[questionCount].parties.forEach(function(element) {
+		if (element.position == "pro") {
+			document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+		} else if (element.position == "ambivalent") {
+			document.getElementById("none").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+		} else if (element.position == "contra") {
+			document.getElementById("oneens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
+		}
+	});
 }
 
 function changeStelling(opinion){
