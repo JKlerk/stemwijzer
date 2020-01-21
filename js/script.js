@@ -120,7 +120,7 @@ function showResult(){
 	// Styling
 	stellingStatement.classList.add('w3-hide');
 	stellingParties.classList.add('w3-hide');
-	stellingTitle.classList.add('w3-hide');
+	stellingTitle.innerHTML = 'Eind resultaat';
 	multiplyDiv.classList.add('w3-hide');
 	buttons.classList.add('w3-hide');
 	buttonBack.classList.add('w3-hide');
