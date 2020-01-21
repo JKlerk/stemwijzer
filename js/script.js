@@ -37,7 +37,7 @@ document.getElementById("start").addEventListener("click", function start(){
 
 // Sets stelling on page
 function getStelling(){
-	if(answers.length !== 7){
+	if(answers.length !== subjects.length){
 		stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
 		stellingStatement.innerHTML = subjects[questionCount].statement
 		document.getElementById("bar").style.width = 14.2857142857 + "%";
