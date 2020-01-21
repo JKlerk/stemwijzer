@@ -40,7 +40,7 @@ function getStelling(){
 	if(answers.length !== subjects.length){
 		stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
 		stellingStatement.innerHTML = subjects[questionCount].statement
-		document.getElementById("bar").style.width = 14.2857142857 + "%";
+		document.getElementById("bar").style.width = 14.2857142857 * (questionCount + 1) + "%";
 
 		document.getElementById("eens").innerHTML = "";
 		document.getElementById("none").innerHTML = "";
