@@ -6,15 +6,10 @@ const buttonBack = document.getElementById('buttonBack');
 const multiply = document.getElementById('multiply');
 
 // Answers
-var pro = [];
-var contra = [];
-var ambivalent = [];
 var answers = [];
 
 // Bar length
 var questionCount = 0;
-var baseLength = 14.2857142857;
-var curLength = 14.2857142857;
 
 document.getElementById("start").addEventListener("click", function start(){	
 	// Hiding Main page elements
@@ -29,6 +24,13 @@ document.getElementById("start").addEventListener("click", function start(){
 	buttonBack.classList.remove('w3-hide');
 	document.getElementById('multiplyDiv').classList.remove('w3-hide');
 
+	// Sets party points to 0
+	for (let i = 0; i < parties.length; i++) {
+		if (isNaN(parties[i].points)){
+			parties[i].points = 0
+		}		
+	}
+
 	// Gets stelling
 	getStelling()
 })
@@ -38,7 +40,12 @@ function getStelling(){
 	if(answers.length !== 7){
 		stellingTitle.innerHTML = questionCount + 1 + '. ' + subjects[questionCount].title
 		stellingStatement.innerHTML = subjects[questionCount].statement
-		document.getElementById("bar").style.width = curLength + "%";
+		document.getElementById("bar").style.width = 14.2857142857 + "%";
+
+		document.getElementById("eens").innerHTML = "";
+		document.getElementById("none").innerHTML = "";
+		document.getElementById("oneens").innerHTML = "";
+
 		subjects[questionCount].parties.forEach(function(element) {
 			if (element.position == "pro") {
 				document.getElementById("eens").innerHTML += "<details class=\"opinion__party\"><summary class=\"party__title\">" + element.name + "</summary><p class=\"party__description\"> " + element.explanation + "</p></details>"
@@ -49,7 +56,7 @@ function getStelling(){
 			}
 		});
 	} else{
-		calculate();
+		showResult();
 	}
 }
 
@@ -62,14 +69,36 @@ function changeStelling(opinion){
 	if(answers.length === 0){
 		answers.push(newAnswers);
 		questionCount++;
+		var multiplier = 1;
+		if(newAnswers.heavy){
+			multiplier = 2;
+		}
+		for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+			if(subjects[questionCount].parties[i].position === newAnswers.opinion){
+				const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+				party.points += multiplier;
+			}
+		}
 	} else{
-		// Replaces old choise when going back
+		// Finds item
 		const item = answers.find(element => element.question_id === questionCount);
+		// Sets choice if there is no item that exists
 		if(item === undefined){
 			answers.push(newAnswers);
+			var multiplier = 1;
+			if(newAnswers.heavy){
+				multiplier = 2;
+			}
+			for (let i = 0; i < subjects[questionCount].parties.length; i++) {
+				if(subjects[questionCount].parties[i].position === newAnswers.opinion){
+					const party = parties.find(element => element.name === subjects[questionCount].parties[i].name);
+					party.points += multiplier;
+				}
+			}
 		} else{
+			// Replaces old choice when going back
 			item.opinion = opinion;	
-			item.heavy = multiply.checked;	
+			item.heavy = multiply.checked;
 		}
 		questionCount++;
 	}
@@ -86,37 +115,25 @@ function goBack(){
 	}
 }
 
-
-// Calculate
-function calculate(){
-	// Haalt alle antwoord op index = question nummer
-	for (let index = 0; index < answers.length; index++) {
-		var yourOpinions = answers[index].opinion
-		// Haalt alle parties op. logged elke keer voor elke vraag opnieuw de positions van de partijen
-		for (let i = 0; i < subjects[index].parties.length; i++) {
-			var party = subjects[index].parties[i]
-			console.log('Question: ' + index)
-			console.log('Party:' + party.name)
-			console.log('Position:' + party.position)
-			// Geeft punten als mening zelfde is als party
-			if(party.position === 'pro' && yourOpinions){
-				if (isNaN(party.points)) party.points = 0
-				console.log(party.points += 1);
-			} else{
-				if (isNaN(party.points)) party.points = 0
-				console.log(party.points -= 1);
-			}
-		}
-	}
-}
-
 // Shows end result
 function showResult(){
+	// Styling
+	stellingStatement.classList.add('w3-hide');
+	stellingParties.classList.add('w3-hide');
+	stellingTitle.classList.add('w3-hide');
+	multiplyDiv.classList.add('w3-hide');
+	buttons.classList.add('w3-hide');
+	buttonBack.classList.add('w3-hide');
+
 	var div = document.getElementById("results")
 	var result = document.createElement("span")
 
-	for (let index = 0; index < subjects.length; index++) {
-		result.innerHTML += '<p class="mb-0 mt-1">' + parties[i].name + '</p>' + '<div class="w3-'+ color +'" style="max-width:1000px;width:'+ calcLength +'%">'+ status + percent + '%</div>';
+	// 7 punten is 100%;
+	var baseLength = 14.2857142857;
+
+	for (let index = 0; index < parties.length; index++) {
+		var barLength = baseLength * parties[index].points
+		result.innerHTML += '<p class="mb-0 mt-1">' + parties[index].name + '</p>' + '<div class="w3-green" style="max-width:1000px;width:'+ barLength +'%">'+ Math.round(barLength) + '%</div>';
 	}
 	div.appendChild(result)
 }
